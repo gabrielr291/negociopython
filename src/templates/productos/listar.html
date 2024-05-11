@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/productos.css' %}">
+    <div class="row pt-3">
+      <div class="col-md-3"></div>
+
+      <div class="col-md-6">
+        <h1 class="titulo-prod">Administracion de productos</h1>
+      </div>
+
+      <div class="col-md-1">
+        <a href="{% url 'listarTiposProductos' %}" title="Editar" type="button" class="btn btn-primary botones mt-3">Ir a tipos de productos </a>
+        <a href="{% url 'listarFamiliasProductos' %}" title="Editar" type="button" class="btn btn-primary botones mt-3">Ir a familia de productos </a>
+      </div>
+    </div>
+
+    <div class="container p-1">
+      
+      <div class="container mb-4">
+        {% if messages %}
+          <ul class="messages list-group mb-3">
+            {% for message in messages %}
+              <li {% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <table class="table table-striped table-hover">
+        <h3 class="titulo-producto text-center p-2 mb-0">Productos</h3>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Stock</th>
+            <th>Stock critico</th>
+            <th>Familia del producto</th>
+            <th>Disponible</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        {% for producto in productos %}
+          <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.stock }}</td>
+            <td>{{ producto.stock_critico }}</td>
+            <td>{{ producto.familia_producto }}</td>
+            {% if producto.estado == 1 %}
+              <td class="text-center">Si</td>
+            {% else %}
+              <td class="text-center">No</td>
+            {% endif %}
+            <td>
+                             
+              <form method="POST" action="">
+                {% csrf_token %}
+                <div class="btn-group">
+      
+                  <a href="detalle/{{producto.id}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                  <a href="editar/{{producto.id}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                  
+                  {% if producto.estado %}
+                    <a href="desactivarProducto/{{producto.id}}" title="DesactivarProducto" type="button" class="btn btn-danger">Desactivar Producto</a>
+                  {% else %}
+                    <a href="activarProducto/{{producto.id}}" title="ActivarProducto" type="button" class="btn btn-danger">Activar Producto</a>
+                  {% endif %}
+
+                </div>
+              </form>
+      
+            </td>
+          </tr>
+        {% endfor %}
+      
+        </tbody>
+      </table>
+
+      <div align="left" class="btn_crear mb-3">
+        <a href="{% url 'crearProducto' %}" type="button" class="btn btn-primary">Crear</a>
+      </div>
+
+    </div>
+
+{% endblock %}

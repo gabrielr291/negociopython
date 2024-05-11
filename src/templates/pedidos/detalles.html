@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/proveedores.css' %}">
+<div class="container pt-4">
+    <table class="table table-striped table-hover">
+        <h3 class="titulo-proveedor text-center p-2 mb-0">Detalles de Pedido {{ id }}</h3>
+        <thead>
+            <tr>
+                <th>Numero de pedido</th>
+                <th>Proveedor</th>
+                <th>Fecha pedido</th>
+                <th>Fecha llegada</th>
+                <th>Fecha recepcion</th>
+                <th>Hora recepcion</th>
+                <th>Estado recepcion</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        
+        <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'postres' y los listamos -->
+            {% for ped in pedido %}
+                <tr>
+                    <td>{{ped.id}}</td>
+                    <td>{{ped.proveedor }}</td>
+                    <td>{{ped.fecha_pedido }}</td>
+                    <td>{{ped.fecha_llegada }}</td>
+                    <td>{{ped.fecha_recepcion }}</td>
+                    <td>{{ped.hora_recepcion }}</td>
+                    {% if ped.estado_recepcion == 0 %}
+                        <td class="">En espera</td>
+                    {% elif ped.estado_recepcion == 1 %}
+                        <td class="">Recepcionado</td>
+                    {% elif orden.estado_recepcion == 3 %}
+                        <td class="">Anulado</td>
+                    {% else %}
+                        <td class="">Atrasado</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+                
+        </tbody>
+    </table>
+
+    <table class="table table-striped table-hover">
+        
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        
+        <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'postres' y los listamos -->
+            {% for detP in detallesP %}
+                <tr>
+                    <td>{{ detP.producto }}</td>
+                    <td>{{ detP.cantidad }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+</div>
+
+{% endblock %}

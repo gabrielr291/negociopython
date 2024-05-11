@@ -1,0 +1,9 @@
+body{
+    background-image: url("../images/almacen.jpeg");
+}
+
+.imagen-principal{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}

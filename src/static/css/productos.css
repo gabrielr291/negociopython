@@ -1,0 +1,39 @@
+.titulo-producto{
+    background-color: #3ae9bd;
+}
+
+table thead {
+    background-color: #d4e7fc;
+}
+
+table tbody {
+    background-color: #d4e7fc;
+}
+
+.contenedorCrearProducto{
+    max-width: 800px;
+    background-color: #c0fbe4;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 5px;
+}
+
+.txt_negrita{
+    font-size: 25px;
+}
+
+.cajaDetalles{
+    flex: auto;
+}
+
+.titulo-prod{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.botones{
+    width: 220px;
+    height: 40px;
+}

@@ -1,0 +1,38 @@
+{% extends 'layout_registration.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    
+    <div class="container text-center">
+        
+       
+        <h1 class="text-center p-3">Almacen Yuyitos</h1>
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+        <form method="post" action="" class="pb-4">
+            {% csrf_token%}
+            <div class="container text-center" style="width: 400px;">
+                <p>
+                <label for="username">Usuario:</label>
+                <input class="form-control" type="text" name="username" style="border: revert;"/>
+                </p>
+            </div>
+            
+            <div class="container text-center" style="width: 400px;">
+                <p>
+                <label for="password">Contraseña:</label>
+                <input class="form-control" type="password" name="password" style="border: revert;"/>
+                </p>
+            </div>
+
+            <div class="container text-center" >
+            <input class="btn btn-primary text-white" type="submit" value="Ingresar" />
+            </div>
+       </form>
+    </div>
+
+{% endblock %}

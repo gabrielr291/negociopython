@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/productos.css' %}">
+     <div class="container contenedorCrearProducto p-5 mt-3">
+        <h1 class="text-center" >Detalles del Producto</h1>
+        <div class="row p-5">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3 cajaDetalles">
+                <span class="txt_negrita">Nombre: {{producto.nombre}}</span> <br> 
+                <span class="txt_negrita">Stock: {{producto.stock}}</span> <br>
+                <span class="txt_negrita">Precio: {{producto.precio}}</span> <br>
+                <span class="txt_negrita">Descripcion: {{producto.descripcion}}</span> <br>
+                <span class="txt_negrita">Precio compra: {{producto.precio_compra}}</span> <br>
+                <span class="txt_negrita">Stock: {{producto.stock}}</span> <br>
+                <span class="txt_negrita">stock critico: {{producto.stock_critico}}</span> <br>
+                <span class="txt_negrita">fecha de vencimiento: {{producto.fecha_vencimiento}}</span> <br>
+                <span class="txt_negrita">Codigo de barra: {{producto.codigo_barra}}</span> <br>  
+                <span class="txt_negrita">familia de producto: {{producto.familia_producto}}</span> <br>
+                <br>
+                <a href="../" type="submit" class="btn btn-primary">Volver</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
